@@ -1,0 +1,21 @@
+-- Import required libraries
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+
+-- Function to unlock all items
+function unlockAllItems()
+    -- Get the player's character
+    local player = Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    -- Get the player's inventory
+    local inventory = character:WaitForChild("Inventory")
+
+    -- Unlock all items
+    for _, item in pairs(inventory:GetChildren()) do
+        item.Unlocked.Value = true
+    end
+end
+
+-- Call the function to unlock all items
+unlockAllItems()
